@@ -84,12 +84,15 @@ os의 기능 중 하나인 프로세스 관리 부서에는
 > ##### [세마포어의 두가지 동작]
 > P (test) : acquire()
 >
-> - P 동작 전개에 대한 설명~~ 
+> - P 동작 전개
+> 1. 세마포어의 Integer 변수의 값 -1 ;
+> 2. Integer 변수의 값이 음수 이면 -> 대기큐에 **현재** 프로세스를 넣고 **블락**한다.
 > 
 > V (increment) : release()
 >
-> - V 동작 전개에 대한 설명~~
->
+> - V 동작 전개
+> 1. 세마포어의 Integer 변수의 값 +1 ;
+> 2. Integer 변수의 값 0이거나 음수인 경우  ->  대기큐에서 **하나의 P 프로세스**를 커내서 **릴리즈**한다.
 
 <br>
 
@@ -117,6 +120,35 @@ class Semaphore {
   }
 }
 ```
+
+- 세마포어의 예저 코드는 Semaphore패키지에서 확인할 수 있습니다.
+
+
+### 세마포어의 사용목적
+
+1. Mutual Exclusion (임계구역 문제 해결)
+
+    <br>
+
+    Integer value 를 공유하면서 해당 변수값의 변동을 이용해서 block / release 를 함으로써 임계구역문제를 해결한다.
+
+    <br>
+
+   <img width="1072" alt="image" src="https://user-images.githubusercontent.com/71380240/216970243-01474be8-5604-49bb-b4dd-4a1cd834af9b.png">
+
+<br>
+
+2. Ordering (프로세스의 실행순서를 제어)
+    
+    <br>
+
+    아래는 cpu 스케쥴링 알고리즘과 관계없이 무조건 s1 이 먼저 실행되도록 할 수 있다.
+
+    <br>    
+   
+    <img width="1044" alt="image" src="https://user-images.githubusercontent.com/71380240/216970474-910dbae2-e2e2-489b-8183-797b64656476.png">
+
+<br>
 
 ## 2. Monitor
 
