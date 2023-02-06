@@ -1,5 +1,6 @@
 # Process/Thread Synchronization
 - 프로세스/쓰레드 동기화 도구인 Semaphore, Monitors, Misc를 적용합니다.
+- 양희재 교수님 OS강의 참고.
 
 <br>
 
