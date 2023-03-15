@@ -1,4 +1,4 @@
-package semaphore;
+package semaphore.mutual_exclusion;
 
 import java.util.concurrent.Semaphore;
 
