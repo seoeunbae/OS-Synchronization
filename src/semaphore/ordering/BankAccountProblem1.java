@@ -1,8 +1,8 @@
 package semaphore.ordering;
 
 import java.util.concurrent.Semaphore;
-
-public class BankAccountProblem {
+//입금-> 출금 순으로 실행되도록 Ordering 하기
+public class BankAccountProblem1 {
     class BankAccount{
         int balance;
 
