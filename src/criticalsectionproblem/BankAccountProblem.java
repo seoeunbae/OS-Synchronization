@@ -20,10 +20,14 @@ public class BankAccountProblem {
 class BankAccount{
     int balance;
     void deposit(int amount){
-        balance = balance + amount;
+        int temp = balance + amount;
+        System.out.print("+");
+        balance = temp;
     }
     void withdraw(int amount){
-        balance = balance - amount;
+        int temp = balance - amount;
+        System.out.print("-");
+        balance = temp;
     }
     int getBalance(){
         return balance;
