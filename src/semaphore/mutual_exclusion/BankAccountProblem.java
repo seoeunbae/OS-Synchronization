@@ -1,18 +1,20 @@
 package semaphore.mutual_exclusion;
 
+import synchronization_problem.criticalsectionproblem.BankAccount;
+
 import java.util.concurrent.Semaphore;
 
 public class BankAccountProblem {
-    class BankAccount{
+    class BankAccountImpl implements BankAccount {
         int balance;
 
         Semaphore sem;
-        BankAccount(){
+        BankAccountImpl(){
             sem = new Semaphore(1);
             //value값을 1로 초기화
         }
-
-        void deposit(int amount){
+        @Override
+        public void deposit(int amount){
             try{
                 sem.acquire(); //임계구역에 들어가기를 요창한다.
             } catch (InterruptedException e) { }
@@ -23,8 +25,8 @@ public class BankAccountProblem {
 
             sem.release(); //임계구역에서 나간다.
         }
-
-        void withdraw(int amount){
+        @Override
+        public void withdraw(int amount){
             try{
                 sem.acquire();
             } catch (InterruptedException e) { }
@@ -35,8 +37,8 @@ public class BankAccountProblem {
 
             sem.release();
         }
-
-        int getBalance(){
+        @Override
+        public int getBalance(){
             return balance;
         }
     }

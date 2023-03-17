@@ -1,10 +1,13 @@
-package criticalsectionproblem;
+package synchronization_problem.criticalsectionproblem;
+
+import synchronization_problem.processes.Child;
+import synchronization_problem.processes.Parent;
 
 import java.io.IOException;
 
 public class BankAccountProblem {
     public static void main(String[] args) throws InterruptedException, IOException {
-        BankAccount bankAccount = new BankAccount();
+        BankAccount bankAccount = new BankAccountImpl();
         Parent parent = new Parent(bankAccount);
         Child child = new Child(bankAccount);
 
@@ -17,49 +20,23 @@ public class BankAccountProblem {
     }
 }
 //계좌
-class BankAccount{
+class BankAccountImpl implements BankAccount {
     int balance;
-    void deposit(int amount){
+    @Override
+    public void deposit(int amount){
         int temp = balance + amount;
         System.out.print("+");
         balance = temp;
     }
-    void withdraw(int amount){
+    @Override
+    public void withdraw(int amount){
         int temp = balance - amount;
         System.out.print("-");
         balance = temp;
     }
-    int getBalance(){
+    @Override
+    public int getBalance(){
         return balance;
-    }
-}
-
-//입금 프로세스
-class Parent extends Thread{
-    BankAccount b;
-
-    Parent(BankAccount b){
-        this.b = b;
-    }
-
-    public void run(){
-        for(int i=0 ; i<100 ; i++){
-            b.deposit(1000);
-        }
-    }
-}
-//출금 프로세스
-class Child extends Thread{
-    BankAccount b;
-
-    Child(BankAccount b){
-        this.b = b;
-    }
-
-    public void run(){
-        for(int i=0 ; i<100 ; i++){
-            b.withdraw(1000);
-        }
     }
 }
 

@@ -1,9 +1,11 @@
 package semaphore.ordering;
 
 //입출금을 교대로 실행하도록 Ordering 하기
+import synchronization_problem.criticalsectionproblem.BankAccount;
+
 import java.util.concurrent.Semaphore;
 
-public class BankAccountProblem2 {
+public class BankAccountProblem2 implements BankAccount {
     int balance;
     Semaphore sem, semDeposit, semWithdraw;
 
@@ -13,8 +15,8 @@ public class BankAccountProblem2 {
         semWithdraw = new Semaphore(0);
 
     }
-
-    void deposit(int amount){
+    @Override
+    public void deposit(int amount){
         try{
             sem.acquire();
             int temp = balance + amount;
@@ -25,8 +27,8 @@ public class BankAccountProblem2 {
             semDeposit.acquire();
         } catch (InterruptedException e) { }
     }
-
-    void withdraw(int amount){
+    @Override
+    public void withdraw(int amount){
         try{
             semWithdraw.acquire();
             sem.acquire();
@@ -38,8 +40,8 @@ public class BankAccountProblem2 {
         sem.release();
         semDeposit.release();
     }
-
-    int getBalance(){
+    @Override
+    public int getBalance(){
         return balance;
     }
 }
