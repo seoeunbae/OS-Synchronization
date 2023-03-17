@@ -1,8 +1,8 @@
 package monitor.mutual_exclusion;
 
 import synchronization_problem.criticalsectionproblem.BankAccount;
-import synchronization_problem.processes.Child;
-import synchronization_problem.processes.Parent;
+import synchronization_problem.criticalsectionproblem.processes.Child;
+import synchronization_problem.criticalsectionproblem.processes.Parent;
 
 public class BankAccountProblem {
     public static void main(String[] args) throws InterruptedException {

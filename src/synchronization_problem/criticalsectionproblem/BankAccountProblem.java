@@ -1,7 +1,7 @@
 package synchronization_problem.criticalsectionproblem;
 
-import synchronization_problem.processes.Child;
-import synchronization_problem.processes.Parent;
+import synchronization_problem.criticalsectionproblem.processes.Child;
+import synchronization_problem.criticalsectionproblem.processes.Parent;
 
 import java.io.IOException;
 

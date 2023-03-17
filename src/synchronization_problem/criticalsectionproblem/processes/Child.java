@@ -1,4 +1,4 @@
-package synchronization_problem.processes;
+package synchronization_problem.criticalsectionproblem.processes;
 
 import synchronization_problem.criticalsectionproblem.BankAccount;
 //출금 프로세스
