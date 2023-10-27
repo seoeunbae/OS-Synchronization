@@ -151,9 +151,5 @@ class Semaphore {
 
 <br>
 
-## 2. Monitor
-
-
-## 3. Misc
 
 
